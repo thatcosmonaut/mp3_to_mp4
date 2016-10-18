@@ -25,6 +25,27 @@ while getopts ":i:f:o:" opt; do
   esac
 done
 
+if [ "$image" = '' ]; then
+  echo "Option -i is required." >&2
+  echo "Usage: " >&2
+  echo "mp3_to_mp4.sh -i /path/to/image -f /path/to/audio/dir -o /path/to/output/dir" >&2
+  exit 1
+fi
+
+if [ "$audio_dir" = '' ]; then
+  echo "Option -f is required." >&2
+  echo "Usage: " >&2
+  echo "mp3_to_mp4.sh -i /path/to/image -f /path/to/audio/dir -o /path/to/output/dir" >&2
+  exit 1
+fi
+
+if [ "$output_dir" = '' ]; then
+  echo "Option -o is required." >&2
+  echo "Usage: " >&2
+  echo "mp3_to_mp4.sh -i /path/to/image -f /path/to/audio/dir -o /path/to/output/dir" >&2
+  exit 1
+fi
+
 for f in $audio_dir/*.mp3
 do
   echo $f
